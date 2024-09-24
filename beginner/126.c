@@ -15,4 +15,8 @@ int main(){
 
     printf("%s",s1);
 
+    int len3=strlen(s1);
+    printf("\nlength of new str: %d", len3);
+
+    return 0;
 }

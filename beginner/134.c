@@ -1,4 +1,4 @@
-//upper to lower without using function
+// upper to lower without using function
 #include<stdio.h>
 int main(){
     char s[20];

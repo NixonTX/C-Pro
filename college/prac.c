@@ -1,14 +1,25 @@
-#include <stdio.h>
-#include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
 
 int main() {
-    char s1[] = "Jackie Chan";
-    int i;
+    int n, i, *ptr;
+    
+    printf("Enter no. of val: ");
+    scanf("%d", &n);
 
-    for(i=0; s1[i] != '\0'; i++) {
+    ptr = (int*)malloc(n*sizeof(int));
+
+    printf("enter vals: ");
+    for(i = 0; i<n; i++) {
+        scanf("%d", (ptr+i));
     }
 
-    printf("Len Str: %d", i);
+    printf("The Entered values are: ");
+    for(i=0; i<n; i++){
+        printf("\n%d", *(ptr+i));
+    }
 
+    free(ptr);
+    
     return 0;
 }

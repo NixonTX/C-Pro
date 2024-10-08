@@ -1,0 +1,97 @@
+### Call by Value and Call by Reference in C
+
+In C programming, **function arguments** can be passed to a function in two ways: **Call by Value** and **Call by Reference**. Each method has different behavior in terms of how the function interacts with the variables.
+
+### 1. **Call by Value**
+In **call by value**, the actual value of the argument is passed to the function. This means a **copy** of the variable is created in the function, and any modifications made to the parameter inside the function **do not affect** the original value in the caller function.
+
+- **Formal Parameters**: These are the parameters defined in the function definition. They receive the copies of the values.
+- **Actual Parameters**: These are the parameters passed to the function during the function call.
+
+#### Example of Call by Value:
+```c
+#include<stdio.h>
+
+void addTen(int x) {  // x is the formal parameter (copy of the argument)
+    x = x + 10;       // Modifying x will not affect the original argument
+    printf("Inside function: x = %d\n", x);
+}
+
+int main() {
+    int a = 5;
+    printf("Before function call: a = %d\n", a);
+    addTen(a);        // a is the actual parameter (its value is passed)
+    printf("After function call: a = %d\n", a);  // a remains unchanged
+
+    return 0;
+}
+```
+
+#### Output:
+```
+Before function call: a = 5
+Inside function: x = 15
+After function call: a = 5
+```
+
+**Explanation**: In this case, when `a` is passed to the `addTen()` function, a copy of `a` is created inside the function as `x`. Changing `x` inside the function does not affect the original variable `a` in `main()` because it's just a copy.
+
+### 2. **Call by Reference**
+In **call by reference**, the **address** of the actual parameter is passed to the function. This means that the function operates on the **original data** through the reference (pointer). Any changes made to the parameter inside the function **will affect** the original variable in the caller function.
+
+- **Formal Parameters**: These are the pointers (or references) that point to the actual variables.
+- **Actual Parameters**: These are the addresses of the actual variables passed to the function.
+
+#### Example of Call by Reference:
+```c
+#include<stdio.h>
+
+void addTen(int *x) {  // x is a pointer (reference to the original variable)
+    *x = *x + 10;      // Dereference x to modify the original variable
+    printf("Inside function: x = %d\n", *x);
+}
+
+int main() {
+    int a = 5;
+    printf("Before function call: a = %d\n", a);
+    addTen(&a);        // Pass the address of a to the function
+    printf("After function call: a = %d\n", a);  // a is modified
+
+    return 0;
+}
+```
+
+#### Output:
+```
+Before function call: a = 5
+Inside function: x = 15
+After function call: a = 15
+```
+
+**Explanation**: In this case, the address of `a` is passed to the `addTen()` function. The pointer `x` now refers to the same memory location as `a`. Modifying `*x` (the value at that address) directly modifies the value of `a` in the `main()` function.
+
+### Comparison:
+- **Call by Value**:
+  - The function receives a copy of the value.
+  - Changes made inside the function do not affect the original variable.
+  - Useful when you want to avoid side effects.
+  
+- **Call by Reference**:
+  - The function receives a reference (or address) to the original variable.
+  - Changes made inside the function affect the original variable.
+  - Useful when you need to modify the actual data or return multiple values.
+
+### Formal and Actual Parameters:
+
+- **Formal Parameters**: These are the parameters that appear in the function definition. In call by value, they hold a copy of the actual parameter. In call by reference, they hold the address of the actual parameter.
+  
+  Example: In the function `addTen(int x)` or `addTen(int *x)`, `x` is the formal parameter.
+
+- **Actual Parameters**: These are the values or addresses passed to the function when it is called.
+
+  Example: In the function call `addTen(a)` or `addTen(&a)`, `a` is the actual parameter.
+
+### Summary:
+
+- **Call by Value**: The function works with a copy of the data; no changes to the original variable.
+- **Call by Reference**: The function works with the actual data through its reference, modifying the original variable.

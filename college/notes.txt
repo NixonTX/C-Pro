@@ -1,3 +1,9 @@
+// entry controlled & exit controlled
+
+// working of string \0
+
+// pointer arithmetic
+
 #include<math.h>
 
 //     char name[] = "Young Robert Baratheon"; why it says 23 

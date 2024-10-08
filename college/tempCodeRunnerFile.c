@@ -1,1 +1,1 @@
-        // i++;
+int avg(int [], int);

@@ -2,24 +2,30 @@
 #include<stdlib.h>
 
 int main() {
-    int n, i, *ptr;
-    
-    printf("Enter no. of val: ");
+    int *ptr1, n, i;
+    printf("val of n: ");
     scanf("%d", &n);
 
-    ptr = (int*)malloc(n*sizeof(int));
+    ptr1 = (int*)malloc(n*sizeof(int));
 
-    printf("enter vals: ");
-    for(i = 0; i<n; i++) {
-        scanf("%d", (ptr+i));
+    printf("\nenter vals: ");
+    for(i=0; i<n; i++) {
+        scanf("%d", (ptr1+i));
     }
 
-    printf("The Entered values are: ");
-    for(i=0; i<n; i++){
-        printf("\n%d", *(ptr+i));
+    printf("\nNew n: ");
+    scanf("%d",&n);
+
+    int *ptr2 = (int*)realloc(ptr1, n*sizeof(int));
+
+    printf("\nPrev add is %d, New add is %d", ptr1, ptr2);
+
+    printf("\nThe vals: ");
+    for(i=0; i<n; i++) {
+        printf("%d\n", *(ptr2+i));
     }
 
-    free(ptr);
-    
+    free(ptr2);
+
     return 0;
 }

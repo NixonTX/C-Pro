@@ -1,0 +1,2 @@
+extern in c - Access Global Variables Across Files.
+            - (Declare a Function Without Defining It.)

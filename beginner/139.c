@@ -6,6 +6,8 @@ int main(){
     int *p = &a[0];
 
     p=p+2;
+    printf("%d\n",*p);
+
     p=&a[3];
     //*p=2;
 
